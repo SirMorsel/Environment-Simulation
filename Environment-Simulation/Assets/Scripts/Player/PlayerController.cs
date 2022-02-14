@@ -6,17 +6,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerStats playerStats;
+    private UIManager uiManager;
+
+    private GameObject objectToInteract = null;
 
     // Start is called before the first frame update
     void Start()
     {
         playerStats = this.GetComponent<PlayerStats>();
+        uiManager = UIManager.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        Interact();
     }
 
     private void Move()
@@ -34,6 +39,32 @@ public class PlayerController : MonoBehaviour
             }
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * playerStats.GetTurnSpeed());
             transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Interactable")
+        {
+            uiManager.ChangeInteractableUITextVisibility(true);
+            objectToInteract = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Interactable")
+        {
+            uiManager.ChangeInteractableUITextVisibility(false);
+            objectToInteract = null;
+        }
+    }
+
+    private void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && objectToInteract != null)
+        {
+            objectToInteract.gameObject.GetComponent<SnowMelt>().ChangeIsOnState();
         }
     }
 }

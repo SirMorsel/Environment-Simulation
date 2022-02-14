@@ -64,7 +64,7 @@ public class SnowMelt : MonoBehaviour
             if (currentMeltRange > 0)
             {
                 diffusionMeltCountdown -= Time.deltaTime;
-                if ( diffusionMeltCountdown <= 0)
+                if (diffusionMeltCountdown <= 0)
                 {
                     fire.SetActive(false);
                     currentMeltRange -= diffusionValue;
@@ -73,5 +73,10 @@ public class SnowMelt : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeIsOnState()
+    {
+        isOn = !isOn;
     }
 } 

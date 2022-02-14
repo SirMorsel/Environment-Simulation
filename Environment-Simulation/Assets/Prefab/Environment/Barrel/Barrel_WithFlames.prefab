@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6225986164402760686}
   - component: {fileID: 8179612417000070948}
   - component: {fileID: 636421219319254779}
+  - component: {fileID: 2240644750656633319}
   m_Layer: 0
   m_Name: Barrel_WithFlames
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +97,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712bee51914c22c4c9971727de8c53bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 0
+  maxMeltTimerValue: 0
+  meltMaxRange: 0
+--- !u!65 &2240644750656633319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675029144740462321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02149894, y: 0.021498935, z: 0.025404997}
+  m_Center: {x: 0, y: 9.3132235e-10, z: 0.022702495}
 --- !u!1001 &2644774082261094616
 PrefabInstance:
   m_ObjectHideFlags: 0
